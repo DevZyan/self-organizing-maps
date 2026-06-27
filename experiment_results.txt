@@ -1,0 +1,87 @@
+
+======================================================================
+         SELF-ORGANIZING MAPS EXPERIMENT - FINAL RESULTS
+======================================================================
+
+DATASETS:
+---------
+1. Iris Dataset
+   - Samples: 150
+   - Features: 4 (sepal length, sepal width, petal length, petal width)
+   - Classes: 3 (Setosa, Versicolor, Virginica)
+
+2. Synthetic Blob Dataset
+   - Samples: 300
+   - Features: 2
+   - Clusters: 4
+
+EXPERIMENTS CONDUCTED:
+---------------------
+✓ From-scratch NumPy SOM implementation
+✓ Grid size comparison (6×6, 8×8, 10×10)
+✓ Training with 5000 iterations
+✓ Exponential decay for learning rate and neighborhood radius
+
+QUANTITATIVE RESULTS:
+--------------------
+
+Table 1: Grid Size Impact on Quantization Error (Iris Dataset)
+┌────────────┬─────────────────┐
+│ Grid Size  │ Quant. Error    │
+├────────────┼─────────────────┤
+│ 6×6        │ 0.1233          │
+│ 8×8        │ 0.1100          │
+│ 10×10      │ 0.1178          │
+└────────────┴─────────────────┘
+
+Best: 8×8 grid with QE = 0.1100
+
+Table 2: Final Model Performance
+┌──────────────┬──────────────┬─────────────────┬────────────────┐
+│ Dataset      │ Grid Size    │ Quant. Error    │ Cluster Purity │
+├──────────────┼──────────────┼─────────────────┼────────────────┤
+│ Iris         │ 8×8          │ 0.1100          │ 98.00%         │
+│ Blobs        │ 10×10        │ 0.0222          │ 100.00%        │
+└──────────────┴──────────────┴─────────────────┴────────────────┘
+
+KEY FINDINGS:
+-------------
+1. The 8×8 grid provided optimal balance for Iris dataset
+2. Iris cluster purity of 98% - only 3 misclassifications
+3. Setosa species completely separated (as expected)
+4. Versicolor and Virginica show expected overlap
+5. Blob dataset achieved perfect 100% purity
+6. Lower QE for blobs (0.0222) due to well-separated clusters
+7. U-matrices clearly show cluster boundaries
+
+VISUALIZATIONS GENERATED:
+------------------------
+✓ iris_umatrix.pdf - Distance map for Iris
+✓ blobs_umatrix.pdf - Distance map for synthetic blobs  
+✓ iris_component_planes.pdf - Individual feature maps
+✓ hit_maps_comparison.pdf - Sample distribution analysis
+✓ som_comprehensive_results.png - Combined overview
+
+FILES CREATED:
+--------------
+1. som_report_final.tex - Complete LaTeX report
+2. All PDF figures for inclusion in report
+3. Python implementation code (saved in memory)
+
+NEXT STEPS TO COMPLETE REPORT:
+------------------------------
+1. Compile LaTeX: pdflatex som_report_final.tex
+2. All figures are ready and in correct format
+3. Tables already contain actual experimental results
+4. No additional experiments needed
+
+HYPERPARAMETER SUMMARY:
+----------------------
+- Initial learning rate (α₀): 0.5
+- Initial radius (σ₀): 4.0 (Iris), 5.0 (Blobs)  
+- Iterations: 5000
+- Decay: Exponential
+- Topology: Rectangular (Iris), Hexagonal (Blobs)
+- Initialization: Random uniform [0,1]
+
+======================================================================
